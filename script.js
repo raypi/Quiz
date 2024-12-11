@@ -54,6 +54,8 @@ let questions = [
 // Variablen
 let currentQuestion = 0;
 let correctAnswers = 0;
+let AudioSuccess = new Audio('sound/success.mp3'); // kein direkter Pfad "./ordner/datei"
+let AudioWrong = new Audio('sound/wrong.mp3'); // erstellt Variable mit derm Audio
 
 // Vorlage für weitere Fragen
 // {
@@ -115,9 +117,11 @@ function answer(selection){ // Inhalt der Variable selection wird vom Buttun per
     if(selectedQuestionNumber == question['rightAnswer']) { // prüft ob gegebene Antwort der Richtigen Antwort entspricht
         document.getElementById(selection).parentNode.classList.add('bg-success'); // classList.add('bg-succes') fügt dem Element die CSS Class bg-sucess hinzu, dabei greift die Variable selection direkt auf die ID des DIV zu 
         correctAnswers++; // zählt bei einer Richtigen Antwort + 1 um später die Anzahl der richtigen Antworten auszugeben. 
+        AudioSuccess.play();
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger'); // siehe Farbwechsel bi IF
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success'); // Richtige Antwort grün markieren mit der Hilfsvariable idOfRightAnswer (setzt) Ziffer und answer zusammen für ID
+        AudioWrong.play();
     }
     document.getElementById('nextButton').disabled = false; // der "nächste Frage" Butten ist enabled bis eine Antwort gegeben wird und danch ist er disabled
 }
