@@ -84,11 +84,9 @@ function showQuestion(){
         document.getElementById('summeOfQuestion').innerHTML = questions.length;
         document.getElementById('summeCorrectAnswers').innerHTML = correctAnswers;
         document.getElementById('headerImg').src = './img/winnerImg.png';
-        document.getElementById('progressBr').innerHTML = `100%`; // setzt Process Bar auf 100%
-        document.getElementById('progressBr').style.width = `100%`;// setzt Process Bar auf 100%
     } else {
         // Erstellt die nächste Frage
-        let percent = currentQuestion / questions.length; // percent hilffariable für fortschrittsbalken (Frage / anzahl Fragen)
+        let percent = (currentQuestion + 1) / questions.length; // percent hilffariable für fortschrittsbalken (Frage+1 / anzahl Fragen)
         percent = Math.round(percent * 100); // x 100 sind Prozent - 
         document.getElementById('progressBr').innerHTML = `${percent} %`; // gibt Prozent Zahl an Prozess Bar zurück
         document.getElementById('progressBr').style.width = `${percent}%`;
