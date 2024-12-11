@@ -1,3 +1,4 @@
+// Objekte
 let questions = [
     {
     "question": "Wer hat HTML erfunden?",
@@ -50,8 +51,9 @@ let questions = [
 
 ];
 
-
+// Variablen
 let currentQuestion = 0;
+
 
 // Vorlage für weitere Fragen
 // {
@@ -64,3 +66,8 @@ let currentQuestion = 0;
 // },
 
 
+// onload aus dem Body - Was soll passieren wenn die Seite geladen wird
+function init(){
+    document.getElementById('allQuestions').innerHTML = questions.length;
+    showQuestion()
+}
