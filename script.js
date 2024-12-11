@@ -85,3 +85,17 @@ function showQuestion(questionTxt){
     document.getElementById('answer4').innerHTML = question['answer4'];
 
 }
+
+
+// Auswahl der richtigen Antwort aus den Antwortmöglichkeiten
+function answer(selection){
+    let question = questions[currentQuestion];
+    console.log('Selected answer is ', selection);
+    let selectedQuestionNumber = selection.slice(-1);
+    console.log('Current question is', question['rightAnswer']);
+    if(selectedQuestionNumber == question['rightAnswer']) {
+        console.log('Richtige Antwort!');
+    } else {
+        console.log('falsche Antwort!')
+    }
+}
