@@ -75,14 +75,21 @@ function init(){
 
 // aktuelle Frage und die dazugehörigen Antworten anzeigen
 function showQuestion(){
-    let question = questions[currentQuestion]; // ertellt Container "question" und holt aus dem container "questions" die erste stelle, (0), heraus
-    document.getElementById('questionNumber').innerHTML = currentQuestion + 1;
-    document.getElementById('questionTxt').innerHTML = question['question'];
+    
+    if (currentQuestion >= questions.length) {
+        document.getElementById('endScreen').style = ''; // greift auf Style Tag in der ID endScreen zu und setzt es auf keinen Wert
+        document.getElementById('questionBody').style = 'display: none;'; // greift auf Style Tag in der ID endScreen zu und setzt es auf keinen Wert
+    } else {
+        
+        let question = questions[currentQuestion]; // ertellt Container "question" und holt aus dem container "questions" die erste stelle, (0), heraus
 
-    document.getElementById('answer1').innerHTML = question['answer1'];
-    document.getElementById('answer2').innerHTML = question['answer2'];
-    document.getElementById('answer3').innerHTML = question['answer3'];
-    document.getElementById('answer4').innerHTML = question['answer4'];
+        document.getElementById('questionNumber').innerHTML = currentQuestion + 1;
+        document.getElementById('questionTxt').innerHTML = question['question'];
+        document.getElementById('answer1').innerHTML = question['answer1'];
+        document.getElementById('answer2').innerHTML = question['answer2'];
+        document.getElementById('answer3').innerHTML = question['answer3'];
+        document.getElementById('answer4').innerHTML = question['answer4'];
+    }    
 
 }
 
