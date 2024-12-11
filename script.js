@@ -53,7 +53,7 @@ let questions = [
 
 // Variablen
 let currentQuestion = 0;
-
+let correctAnswers = 0;
 
 // Vorlage für weitere Fragen
 // {
@@ -79,6 +79,9 @@ function showQuestion(){
     if (currentQuestion >= questions.length) {
         document.getElementById('endScreen').style = ''; // greift auf Style Tag in der ID endScreen zu und setzt es auf keinen Wert
         document.getElementById('questionBody').style = 'display: none;'; // greift auf Style Tag in der ID endScreen zu und setzt es auf keinen Wert
+
+        document.getElementById('summeOfQuestion').innerHTML = questions.length;
+        document.getElementById('summeCorrectAnswers').innerHTML = correctAnswers;
     } else {
         
         let question = questions[currentQuestion]; // ertellt Container "question" und holt aus dem container "questions" die erste stelle, (0), heraus
@@ -105,6 +108,7 @@ function answer(selection){ // Inhalt der Variable selection wird vom Buttun per
 
     if(selectedQuestionNumber == question['rightAnswer']) { // prüft ob gegebene Antwort der Richtigen Antwort entspricht
         document.getElementById(selection).parentNode.classList.add('bg-success'); // classList.add('bg-succes') fügt dem Element die CSS Class bg-sucess hinzu, dabei greift die Variable selection direkt auf die ID des DIV zu 
+        correctAnswers++;
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger'); // siehe Farbwechsel bi IF
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success'); // Richtige Antwort grün markieren mit der Hilfsvariable idOfRightAnswer (setzt) Ziffer und answer zusammen für ID
