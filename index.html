@@ -22,6 +22,9 @@
     <div class="container">
         <div class="cardMain">
             <img src="./img/quiz_bgr.jpg" id="headerImg" class="card-img-top" alt="Header Foto vom Quiz">
+            <div class="progress">
+                <div class="progress-bar" id="progressBr" role="progressbar" style="width: 0%;">0%</div>
+              </div>
             <div id="endScreen" class="card-body" style="display: none;">
                     <div class="textCenter endScreenHeadline">Quiz beendet!</div>
                 <div class="textCenter">
@@ -30,15 +33,11 @@
             </div>    
             <div id="questionBody" class="card-body">
                 <h5 id="questionTxt" class="card-title"></h5>
-                
-                
                 <div class="card quizAnswerCard mb-2" onclick="answer('answer1')">
                     <div id="answer1" class="card-body">
                     
                     </div>
                 </div>
-                
-                
                 <div class="card quizAnswerCard mb-2" onclick="answer('answer2')">
                     <div id="answer2" class="card-body">
                         
