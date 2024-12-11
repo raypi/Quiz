@@ -37,3 +37,13 @@ body{
 .bg-success, .bg-danger {
     color: white !important;
 }
+
+
+.width-100 {
+    width: 100%;
+}
+
+
+.text-center {
+    text-align: center;
+}
