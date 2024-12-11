@@ -144,3 +144,15 @@ function resetAnswerButtons(){
     document.getElementById('answer4').parentNode.classList.remove('bg-danger');
     document.getElementById('answer4').parentNode.classList.remove('bg-success');
 }
+
+
+// Funktion neues Spiel Starten
+function newGame(){
+    document.getElementById('headerImg').src = './img/quiz_bgr.jpg'; // setzt Bild im Header wieder auf Quiz Bild 
+    document.getElementById('questionBody').style = ''; // greift auf Style Tag in der ID questionBody zu und zeigt Ihn wieder an 
+    document.getElementById('endScreen').style = 'display: none;'; // greift auf Style Tag in der ID endScreen zu und setzt es auf ausblenden
+
+    currentQuestion = 0; // Variable bei Neustart auf 0 Setzen durch überschreiben
+    correctAnswers = 0;  // Variable bei Neustart auf 0 Setzen durch überschreiben
+    init();  
+}
