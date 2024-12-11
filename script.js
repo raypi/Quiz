@@ -76,7 +76,7 @@ function init(){
 // aktuelle Frage und die dazugehörigen Antworten anzeigen
 function showQuestion(){
     let question = questions[currentQuestion]; // ertellt Container "question" und holt aus dem container "questions" die erste stelle, (0), heraus
-
+    document.getElementById('questionNumber').innerHTML = currentQuestion + 1;
     document.getElementById('questionTxt').innerHTML = question['question'];
 
     document.getElementById('answer1').innerHTML = question['answer1'];
@@ -112,7 +112,7 @@ function nextQuestion (){
     document.getElementById('nextButton').disabled = true; // der "nächste Frage" Butten wird auf disabled gesetzt
     resetAnswerButtons(); // Aufruf der Funktion
     showQuestion(); // ruft die Funktion showQuestion auf
-    // Anzeige der Frage von X Fragen aktualisieren
+    
 }
 
 
