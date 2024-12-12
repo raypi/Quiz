@@ -78,31 +78,14 @@ function init(){
 // aktuelle Frage und die dazugehörigen Antworten anzeigen
 function showQuestion(){
     
-    if (currentQuestion >= questions.length) {
-        // Anzeige des EndSrceen
-        document.getElementById('endScreen').style = ''; // greift auf Style Tag in der ID endScreen zu und setzt es auf keinen Wert
-        document.getElementById('questionBody').style = 'display: none;'; // greift auf Style Tag in der ID endScreen zu und setzt es auf keinen Wert
-
-        document.getElementById('summeOfQuestion').innerHTML = questions.length;
-        document.getElementById('summeCorrectAnswers').innerHTML = correctAnswers;
-        document.getElementById('headerImg').src = './img/winnerImg.png';
-    } else {
-        // Erstellt die nächste Frage
-        let percent = (currentQuestion + 1) / questions.length; // percent hilffariable für fortschrittsbalken (Frage+1 / anzahl Fragen)
-        percent = Math.round(percent * 100); // x 100 sind Prozent - 
-        document.getElementById('progressBr').innerHTML = `${percent} %`; // gibt Prozent Zahl an Prozess Bar zurück
-        document.getElementById('progressBr').style.width = `${percent}%`;
-        let question = questions[currentQuestion]; // ertellt Container "question" und holt aus dem container "questions" die erste stelle, (0), heraus
-
-        document.getElementById('questionNumber').innerHTML = currentQuestion + 1;
-        document.getElementById('questionTxt').innerHTML = question['question'];
-        document.getElementById('answer1').innerHTML = question['answer1'];
-        document.getElementById('answer2').innerHTML = question['answer2'];
-        document.getElementById('answer3').innerHTML = question['answer3'];
-        document.getElementById('answer4').innerHTML = question['answer4'];
+    if (gameIsOver()) {         // wenn das erfüllt ist zeigen wir den Endscreen ansonsten zeigen wir die nächste Frage
+        showEndScreen();        // Anzeige des EndSrceen
+    } else {                    // Erstellt die nächste Frage
+        updateProgressBar();    // aktualisieren des Fortschrittsbalken
+        updateNextQuestion();   // aktualisieren der nächsten Frage
     }    
-
 }
+
 
 
 // Auswahl der richtigen Antwort aus den Antwortmöglichkeiten
@@ -159,4 +142,47 @@ function newGame(){
     currentQuestion = 0; // Variable bei Neustart auf 0 Setzen durch überschreiben
     correctAnswers = 0;  // Variable bei Neustart auf 0 Setzen durch überschreiben
     init();  
+}
+
+
+// erstellt die nächste Frage und aktualisiert die Anzeige
+function updateNextQuestion() {
+    let question = questions[currentQuestion]; // ertellt Container "question" und holt aus dem container "questions" die erste stelle, (0), heraus
+
+    document.getElementById('questionNumber').innerHTML = currentQuestion + 1;
+    document.getElementById('questionTxt').innerHTML = question['question'];
+    document.getElementById('answer1').innerHTML = question['answer1'];
+    document.getElementById('answer2').innerHTML = question['answer2'];
+    document.getElementById('answer3').innerHTML = question['answer3'];
+    document.getElementById('answer4').innerHTML = question['answer4'];
+}
+
+// erstellt den End Screen und zeigt Ihn an 
+function showEndScreen() {
+        document.getElementById('endScreen').style = ''; // greift auf Style Tag in der ID endScreen zu und setzt es auf keinen Wert
+        document.getElementById('questionBody').style = 'display: none;'; // greift auf Style Tag in der ID endScreen zu und setzt es auf keinen Wert
+        document.getElementById('summeOfQuestion').innerHTML = questions.length;
+        document.getElementById('summeCorrectAnswers').innerHTML = correctAnswers;
+        document.getElementById('headerImg').src = './img/winnerImg.png';
+    }
+
+
+// Fortschritt Balken aktualisieren
+function updateProgressBar() {
+    let percent = (currentQuestion + 1) / questions.length; // percent hilffariable für fortschrittsbalken (Frage+1 / anzahl Fragen)
+    percent = Math.round(percent * 100); // x 100 sind Prozent
+    document.getElementById('progressBr').innerHTML = `${percent} %`; // gibt Prozent Zahl an Prozess Bar zurück
+    document.getElementById('progressBr').style.width = `${percent}%`;     
+}    
+
+
+// Funktion zum Beenden des speiles (ausgelagert)
+function gameIsOver(){
+    return currentQuestion >= questions.length; // einfach die Bedingung Copieren jdeoch immer return davor setzen das der Wert zurück gegeben wird
+}
+
+
+// Richtige Antwort augewählt
+function rightAnswerSelected(selectedQuestionNumber) {
+    return selectedQuestionNumber == question['rightAnswer'];
 }
