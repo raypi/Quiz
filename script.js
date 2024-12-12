@@ -97,7 +97,7 @@ function answer(selection){ // Inhalt der Variable selection wird vom Buttun per
     let idOfRightAnswer = `answer${question['rightAnswer']}`; // ID der Richtigen Antwort ind die Hilfvariable geben
     
 
-    if(selectedQuestionNumber == question['rightAnswer']) { // prüft ob gegebene Antwort der Richtigen Antwort entspricht
+    if(rightAnswerSelected(selectedQuestionNumber, question)) { // prüft ob gegebene Antwort der Richtigen Antwort entspricht
         document.getElementById(selection).parentNode.classList.add('bg-success'); // classList.add('bg-succes') fügt dem Element die CSS Class bg-sucess hinzu, dabei greift die Variable selection direkt auf die ID des DIV zu 
         correctAnswers++; // zählt bei einer Richtigen Antwort + 1 um später die Anzahl der richtigen Antworten auszugeben. 
         AudioSuccess.play();
@@ -183,6 +183,6 @@ function gameIsOver(){
 
 
 // Richtige Antwort augewählt
-function rightAnswerSelected(selectedQuestionNumber) {
+function rightAnswerSelected(selectedQuestionNumber, question) {
     return selectedQuestionNumber == question['rightAnswer'];
 }
